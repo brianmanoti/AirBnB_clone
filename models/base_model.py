@@ -21,11 +21,13 @@ class BaseModel:
             self.updated_at = self.created_at
 
     def save(self):
-        """updates the public instance attribute updated_at with the current datetime"""
+        """updates the public instance attribute updated_at with
+        the current datetime"""
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """returns a dictionary containing all keys/values of __dict__ of the instance"""
+        """returns a dictionary containing all keys/values 
+        of __dict__ of the instance"""
         dict_copy = self.__dict__.copy()
         dict_copy['__class__'] = str(self.__class__.__name__)
         dict_copy['created_at'] = self.created_at.isoformat()
@@ -33,6 +35,7 @@ class BaseModel:
         return dict_copy
 
     def __str__(self):
-        """returns string reprsentation [<class name>] (<self.id>) <self.__dict__>"""
+        """returns string reprsentation [<class name>] (<self.id>)
+        <self.__dict__>"""
         return "[{}] ({}) {}".format(
             type(self).__name__, self.id, self.__dict__)
